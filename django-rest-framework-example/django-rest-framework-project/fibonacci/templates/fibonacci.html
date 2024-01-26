@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Fibonacci{% endblock %}
+{% block content %}
+
+<div class="container w-75">
+    <h1 class="text-center mt-5 mb-5">Fibonacci</h1>
+    <div>
+        <form action="/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-primary">Compute</button>
+        </form>
+    </div>
+    {% if fibonacci_sequence %}
+    <div id="fibonacci-sequence">
+        <h2>Sequence</h2>
+        <table class="table">
+            <tbody id="fibonacci-elements">
+
+            </tbody>
+        </table>
+        
+        <script>
+            function show_sequence()
+            {
+                fibonacci_sequence = {{fibonacci_sequence}};
+                if(fibonacci_sequence)
+                {
+                    subsequences = [];
+                    for(let i=0; i<fibonacci_sequence.length; i+=5)
+                    {
+                        subsequences.push(fibonacci_sequence.slice(i, i+5));
+                    }
+        
+                    let container = document.getElementById("fibonacci-elements");
+                    container.innerHTML = "";
+
+                    for(let sequence of subsequences)
+                    {
+                        let row = document.createElement("tr");
+                        row.className = "";
+                        for(let elem of sequence)
+                        {
+                            col = document.createElement("th");
+                            col.className = "";
+                            col.textContent = elem;
+                            row.appendChild(col);
+                        }
+                        container.appendChild(row);
+                    }
+                }
+            }
+            show_sequence();
+        </script>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
