@@ -11,10 +11,6 @@ COPY django-project /app/django-project
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Allows docker to cache installed dependencies between builds
-COPY requirements.txt requirements.txt
-RUN pip install  -r requirements.txt
-
 # Select the listening port
 EXPOSE 8000
 
