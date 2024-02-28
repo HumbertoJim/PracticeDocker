@@ -21,7 +21,16 @@ class Manager:
         print(f'Project {project} created')
 
     def runproject(self, project):
-        subprocess.call(['python', f'{project}/main.py'])
+        os.chdir(project)
+        subprocess.call(
+            [
+                'powershell.exe',
+                '-Command',
+                '.\\venv\\Scripts\\Activate.ps1;' +
+                'python -m main'
+            ],
+            shell=True
+        )
 
     def run(self, argv):
         try:
