@@ -91,8 +91,10 @@ services:
     - `docker compose exec [project name, usually the foldername] [command with args]`
  * Muestra los logs de la aplicación
     - `docker compose logs -f`
- * Inspeccionar un volumen
+ * Inspecciona un volumen
     - `docker volume inspect [project name, usually the folder name]_[volume name]`
+ * Detiene la aplicación y los volúmenes asociados
+    - `docker compose down -v`
 
 ## Tutorials
  * [Guía de docker para principiantes, cómo crear tu primera aplicación docker](https://www.freecodecamp.org/espanol/news/guia-de-docker-para-principiantes-como-crear-tu-primera-aplicacion-docker/)
