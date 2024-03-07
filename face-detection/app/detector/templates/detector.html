@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <form action="/detector/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit" style="margin-left: 50px;">Send</button>
+        </form>
+
+        {% if image %}
+        <img src="data:image/jpeg;base64,{{image}}">
+        {% endif %}
+    </body>
+</html>
